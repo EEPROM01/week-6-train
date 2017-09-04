@@ -1,0 +1,149 @@
+<!-- Make sure that your app suits this basic spec:
+
+
+When adding trains, administrators should be able to submit the following:
+Train Name
+Destination 
+First Train Time in military time
+Frequency  in minutes
+Code this app to calculate when the next train will arrive; this should be relative to the current time.
+Users from many different machines must be able to view same train times.
+Styling and theme are completely up to you. Get Creative! -->
+
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Train Scheduler</title>
+<!--Firebase-->
+  <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+<!--jQuery-->
+  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <!-- Moment.js Reference -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>  
+
+
+<style>
+img {
+    width: 100px;
+    height: 50px;
+    background-color: red;
+    font-weight: bold;
+    position: relative;
+    -webkit-animation: mymove 5s infinite; /* Safari 4.0 - 8.0 */
+    animation: mymove 5s infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+
+#img {-webkit-animation-timing-function: ease-in;}
+
+
+/* Standard syntax */
+
+#img {animation-timing-function: ease-in;}
+
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+    from {left: 0px;}
+    to {left: 1000px;}
+/* Standard syntax */
+@keyframes mymove {
+    from {left: 0px;}
+    to {left: 1035px;}
+}
+
+</style>
+
+  </head>
+  <body>
+    <!-- El Train Tracker -->
+    <div class="container">
+      <!-- Ll Bootstrappin -->
+      <div class="jumbotron" style="background-color: grey; color: white">
+        <h2 class="text-center">Train Tracker</h2>
+        <h3 class="text-center">All Aboard!</h3>
+      </div>
+      <!-- lets do the grid hustle -->
+      <div class="row">
+        <div class="col-lg-12">
+        <!-- Current Train Panel-->
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><strong>Current Schedule</strong></h3>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover" id='train-table'>
+                <thead>
+                  <tr>
+                    <th>Train Name</th>
+                    <th>Destination</th>
+                    <th>Frequency(min)</th>
+                    <th>Track Number</th>
+                    <th>Next Arival</th>
+                    <th>Minutes Away</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Add de train  -->
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><strong>Add Train</strong></h3>
+            </div>
+            <div class="panel-body">
+              <!-- El Form/ added track #-->
+              <form>
+                <div class="form-group">
+                  <label for="train-name-input">Train Name</label>
+                  <input class="form-control" id="train-name-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="destination-input">Destination</label>
+                  <input class="form-control" id="destination-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="freq-input">Frequency (minutes) (00:00 ex: 5:00)</label>
+                  <input class="form-control" id="freq-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="freq-input">Track Number</label>
+                  <input class="form-control" id="track-num-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="trainTime-input">first train time(military time)</label>
+                  <input class="form-control" id="trainTime-input" type="text">
+                </div>
+                <button class="btn btn-primary" id="add-train-btn" type="submit">Enter</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+ 
+   
+    <div class="row">
+     <div class="col-lg-12">
+      <footer class="panel panel-primary">
+        <img src="https://media.giphy.com/media/3o7qEc1FhfvPMjlSCI/giphy.gif"  style="height: 100px;">
+      </footer>
+    </div>
+    </div>
+</div>
+    <!-- JavaScript -->
+    <script src="sheetlogic.js"></script>
+  </body>
+</html>
