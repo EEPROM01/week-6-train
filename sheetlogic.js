@@ -18,7 +18,7 @@
     storageBucket: "train-time-c0330.appspot.com",
   };
 
-// 2. Button for adding Employees
+// 2. Button for adding 
 $("#add-train-btn").on("click", function(event) {
   event.preventDefault();
   // Gets user input
@@ -27,7 +27,7 @@ $("#add-train-btn").on("click", function(event) {
   var trnTrack = $("#track-num-input").val().trim();
   var trnFreq = $("#freq-input").val().trim();
   var trnTime =  moment($("#trainTime-input").val().trim(), "HH:mm").subtract(10, "years").format("X");
-  // Creates local "temporary" object for holding employee data
+  // Creates local "temporary" object for holding data
   var newTrn = {
     name: trnName,
     destination: trnDest,
@@ -35,7 +35,7 @@ $("#add-train-btn").on("click", function(event) {
     frequency: trnFreq,
     ftt: trnTime
   }
-  // Uploads employee data to the database
+  // Push data to the database
   trainData.push(newTrn);
   // Logs everything to console
   console.log(newTrn.name);
@@ -62,7 +62,7 @@ trainData.on("child_added", function(childSnapshot, prevChildKey){
   var trnTrack = childSnapshot.val().track;
   var trnFreq = childSnapshot.val().frequency;
   var trnTime = childSnapshot.val().ftt;
-  // Employee Info
+  // Train Info
   console.log(trnName);
   console.log(trnDest);
   console.log(trnFreq);
@@ -79,5 +79,3 @@ trainData.on("child_added", function(childSnapshot, prevChildKey){
   $("#train-table > tbody").append("<tr><td>" + trnName+ "</td><td>" + trnDest + "</td><td>" +
   trnFreq + "</td><td>" + trnTrack + "</td><td>" + nextTrainArrival + "</td><td>" + minutes + "</td></tr>");
 });
-// Example Time Math
-// -----------------------------------------------------------------------------
